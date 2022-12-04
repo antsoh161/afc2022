@@ -12,7 +12,6 @@ fn main() {
     }
 
 }
-
 fn make_days() -> Vec<&'static dyn Fn()> {
     // let mut fvec: Vec<&dyn Fn()> = vec![];
     let mut fvec: Vec<&dyn Fn()> = Vec::new();

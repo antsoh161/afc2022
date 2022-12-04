@@ -1,7 +1,6 @@
 
 #![allow(dead_code)]
-use std::{io::{self, BufReader, BufRead}, fs::File};
-
+use std::{io::{self, BufReader, BufRead, Lines}, fs::File};
 const UPPERCASE_OFFSET: u32 = 27;
 const LOWERCASE_OFFSET: u32 = 1;
 
@@ -14,23 +13,43 @@ fn get_prio(item: char) -> u32{
     }
 }
 
-fn prioritize_part1() -> io::Result<()> {
-    let lines = BufReader::new(File::open("./src/afc2022/day3.txt")?).lines().map(|lines| lines.unwrap());
-    let sum: u32 = lines.map(|line| {
+
+fn part_1(lines_in: Lines<BufReader<File>>) -> u32 {
+    lines_in.map(|lines| lines.unwrap())
+        .map(|line| {
         let (a, b) = line.split_at(line.len() / 2);
         a.chars()
         .find(|c| b.contains(*c))
         .map(get_prio)
         .unwrap()
-    }).sum();
+    }).sum::<u32>()
+}
 
-    println!("{sum}");
+fn part_2(lines_in: Lines<BufReader<File>>) -> u32 {
+    lines_in.map(|lines| lines.unwrap())
+        .collect::<Vec<String>>()
+        .chunks(3)
+        .map(|chunks| chunks[0]
+            .chars()
+            .find(|badge| chunks[1].contains(*badge) && chunks[2].contains(*badge))
+            .map(get_prio)
+            .unwrap()
+            )
+            .sum::<u32>()
+}
+
+fn prioritize() -> io::Result<()> {
+    
+    println!("{:?}", part_1(BufReader::new(File::open("./src/afc2022/day3.txt")?).lines()));
+    println!("{:?}", part_2(BufReader::new(File::open("./src/afc2022/day3.txt")?).lines()));
+    
     Ok(())
 }
 
+
 pub fn run() {
-    match prioritize_part1() {
-        Err(err) => {!panic!("{}", err);},
+
+    match prioritize() {
         _ => (),
     }
 }
