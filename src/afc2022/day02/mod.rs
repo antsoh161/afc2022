@@ -1,5 +1,3 @@
-
-
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
@@ -73,7 +71,7 @@ fn play_hand(opponent: &Hand, me: &Hand) -> u32 {
 
 
 fn rock_paper_scissors() -> io::Result<()> {
-    let file = File::open("src/afc2022/day2.txt")?;
+    let file = File::open("src/afc2022/day02/day02.txt")?;
     let reader = BufReader::new(file);
 
     let mut part1_points: u32 = 0;
@@ -90,8 +88,8 @@ fn rock_paper_scissors() -> io::Result<()> {
             Err(err) => { println!("Error: {}", err);}
         }
     }
-    println!("Part1 Points: {}", part1_points);
-    println!("Part2 Points: {}", part2_points);
+    println!("Part1: {}", part1_points);
+    println!("Part2: {}", part2_points);
     Ok(())
 }
 

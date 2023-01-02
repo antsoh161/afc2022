@@ -40,8 +40,8 @@ fn part_2(lines_in: Lines<BufReader<File>>) -> u32 {
 
 fn prioritize() -> io::Result<()> {
     
-    println!("{:?}", part_1(BufReader::new(File::open("./src/afc2022/day3.txt")?).lines()));
-    println!("{:?}", part_2(BufReader::new(File::open("./src/afc2022/day3.txt")?).lines()));
+    println!("Part1: {:?}", part_1(BufReader::new(File::open("src/afc2022/day03/day03.txt")?).lines()));
+    println!("Part1: {:?}", part_2(BufReader::new(File::open("src/afc2022/day03/day03.txt")?).lines()));
     
     Ok(())
 }

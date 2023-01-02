@@ -33,7 +33,7 @@ fn part_2(input: &str) -> usize {
 fn intervals() -> io::Result<()> {
     
     let mut input = String::new();
-    BufReader::new(File::open("./src/afc2022/day4.txt")?).read_to_string(&mut input).unwrap();
+    BufReader::new(File::open("src/afc2022/day04/day04.txt")?).read_to_string(&mut input).unwrap();
     println!("Part1: {}", part_1(input.as_str()));
     println!("Part2: {}", part_2(input.as_str()));
     Ok(())

@@ -1,9 +1,8 @@
-
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
 fn read_elves() -> io::Result<()> {
-    let file = File::open("src/afc2022/day1.txt")?;
+    let file = File::open("src/afc2022/day01/day01.txt")?;
     let reader = BufReader::new(file);
     
     let mut sum = 0;
